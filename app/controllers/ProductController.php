@@ -7,9 +7,15 @@ class ProductController {
         $limit = 10;
         $offset = ($page - 1) * $limit;
 
-        $products = Product::getAll($limit, $offset);
-        $totalProducts = Product::countAll();
+        $search = $_GET['search'] ?? '';
+        $category = $_GET['category'] ?? '';
+        $sort = $_GET['sort'] ?? 'name';
+        $order = $_GET['order'] ?? 'asc';
+
+        $products = Product::getAll($limit, $offset, $search, $category, $sort, $order);
+        $totalProducts = Product::countAll($search, $category);
         $totalPages = ceil($totalProducts / $limit);
+        $categories = Product::getCategories();
 
         $view = __DIR__ . '/../views/products/index.php';
         require __DIR__ . '/../views/layouts/main.php';

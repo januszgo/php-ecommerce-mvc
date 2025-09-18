@@ -1,6 +1,6 @@
 # Skrypt PowerShell do kopiowania wszystkich plików do htdocs XAMPP
 
-$source = "..\php-ecommerce\"
+$source = "."
 $destination = "C:\xampp\htdocs\"
 
 # Kopiowanie plików z nadpisaniem istniejących i usuwaniem nieistniejących
